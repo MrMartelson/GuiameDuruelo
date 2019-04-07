@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private double DurueloLat = 41.955181;
+    private double DurueloLong = -2.931564;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +23,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }    }
 
 
     /**
@@ -42,5 +45,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.setMinZoomPreference(8.0f);
+
+        //Set the map over Duruelo when is created
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
     }
 }

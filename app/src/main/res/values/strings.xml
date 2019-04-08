@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">GuiameDuruelo</string>
     <string name="title_activity_map">GuíameDuruelo</string>
+
+    <string name="image_desc">Imagen del sitio</string>
 </resources>

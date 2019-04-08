@@ -3,4 +3,10 @@
     <string name="title_activity_map">GuíameDuruelo</string>
 
     <string name="image_desc">Imagen del sitio</string>
+
+    <string name="restaurantes">Restaurantes</string>
+    <string name="hoteles">Hoteles</string>
+    <string name="servicios">Servicios</string>
+    <string name="turismo">Turismo</string>
+
 </resources>

@@ -3,7 +3,7 @@ package com.example.android.guiameduruelo;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
+import android.support.v7.widget.Toolbar;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -22,13 +22,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = new SupportMapFragment();
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
-    }
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.map_fragment_container, mapFragment).commit();
 
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+    }
 
     /**
      * Manipulates the map once available.
@@ -52,4 +55,5 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //Set the map over Duruelo when is created
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
     }
+
 }

@@ -8,5 +8,7 @@
     <string name="hoteles">Hoteles</string>
     <string name="servicios">Servicios</string>
     <string name="turismo">Turismo</string>
+    <string name="markers">Markers</string>
+    <string name="title_activity_sections_activity">Secciones</string>
 
 </resources>

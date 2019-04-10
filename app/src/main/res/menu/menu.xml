@@ -3,6 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/expanded_menu"
-        android:title="Menu"/>
+        android:id="@+id/icon_set_markers"
+        android:title="@string/markers"
+        android:icon="@drawable/baseline_explore_24"
+        app:showAsAction="ifRoom"/>
+
 </menu>

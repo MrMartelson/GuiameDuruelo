@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sections_activity"
+            android:name=".SectionsActivity"
             android:label="@string/title_activity_sections_activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 

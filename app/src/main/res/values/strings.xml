@@ -11,4 +11,7 @@
     <string name="markers">Markers</string>
     <string name="title_activity_sections_activity">Secciones</string>
 
+    <string name="bt_map">Mostrar en el mapa</string>
+    <string name="bt_widget">Mostrar en el widget</string>
+
 </resources>

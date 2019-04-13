@@ -69,7 +69,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.icon_set_markers){
-            startActivity(new Intent(getApplicationContext(), Sections_activity.class));
+            startActivity(new Intent(getApplicationContext(), SectionsActivity.class));
             return true;
         }
 

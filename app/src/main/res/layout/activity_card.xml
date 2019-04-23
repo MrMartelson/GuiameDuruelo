@@ -6,7 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
         <ListView
+            android:layout_marginTop="@dimen/margin_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lv_cards"/>

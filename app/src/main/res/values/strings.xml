@@ -14,4 +14,6 @@
     <string name="bt_map">Mostrar en el mapa</string>
     <string name="bt_widget">Mostrar en el widget</string>
 
+    <string name="list">Lista</string>
+
 </resources>

@@ -43,7 +43,9 @@
             android:name=".SectionsActivity"
             android:label="@string/title_activity_sections_activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+        </activity>
+        <activity android:name=".CardList"
+            android:label="@string/list">
         </activity>
     </application>
 

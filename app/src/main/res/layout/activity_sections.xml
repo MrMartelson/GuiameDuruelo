@@ -30,7 +30,7 @@
             android:text="@string/restaurantes"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="seeInfo"/>
+            android:onClick="seeRestaurantsInfo"/>
 
     </LinearLayout>
 
@@ -51,7 +51,7 @@
             android:text="@string/hoteles"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="seeInfo"/>
+            android:onClick="seeHotelsInfo"/>
 
     </LinearLayout>
 
@@ -72,7 +72,7 @@
             android:textStyle="italic"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="seeInfo"/>
+            android:onClick="seeTurismInfo"/>
 
     </LinearLayout>
 
@@ -93,7 +93,7 @@
             android:text="@string/servicios"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="seeInfo"/>
+            android:onClick="seeServicesInfo"/>
 
     </LinearLayout>
 

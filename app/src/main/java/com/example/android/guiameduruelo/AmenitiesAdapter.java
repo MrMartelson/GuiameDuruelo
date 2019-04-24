@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Adapter for the amenities list that will be downloaded **/
+
 public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
     private ArrayList<Amenities> amenitiesList;
     private Context context;

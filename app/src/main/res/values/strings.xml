@@ -16,4 +16,6 @@
 
     <string name="list">Lista</string>
 
+    <string name="download_error">Error en la descarga de datos</string>
+
 </resources>

@@ -29,18 +29,32 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewHolder holder;
 
-        View rootView = inflater.inflate(layoutId, null);
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        TextView placeTextView = rootView.findViewById(R.id.tv_title);
-        TextView infoTextView = rootView.findViewById(R.id.tv_info);
+            convertView = inflater.inflate(layoutId, null);
+
+            holder = new ViewHolder();
+            holder.placeTextView = convertView.findViewById(R.id.tv_title);
+            holder.infoTextView = convertView.findViewById(R.id.tv_info);
+
+            convertView.setTag(holder);
+        } else{
+            holder = (ViewHolder) convertView.getTag();
+        }
 
         Amenities amenities = amenitiesList.get(position);
 
-        placeTextView.setText(amenities.getPlace());
-        infoTextView.setText(amenities.getInfo());
+        holder.placeTextView.setText(amenities.getPlace());
+        holder.infoTextView.setText(amenities.getInfo());
 
-        return rootView;
+        return convertView;
+    }
+
+    private class ViewHolder{
+        public TextView placeTextView;
+        public TextView infoTextView;
     }
 }

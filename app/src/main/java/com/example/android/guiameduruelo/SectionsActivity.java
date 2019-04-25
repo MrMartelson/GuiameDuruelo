@@ -8,6 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-public class SectionsActivity extends AppCompatActivity implements DownloadAsyncTask.DownloadAmenitiesInterface {
+public class SectionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +47,9 @@ public class SectionsActivity extends AppCompatActivity implements DownloadAsync
         //downloadData();
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
-        DownloadAsyncTask.delegate = this;
+
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloHoteles.json?alt=media&token=08dac43d-e8b6-450c-a7db-eeb1cdf41c55"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloHoteles.json?alt=media&token=c7ae73b4-4b1c-41d0-9ab1-e17d217066ef"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -58,9 +62,8 @@ public class SectionsActivity extends AppCompatActivity implements DownloadAsync
 
         //downloadData();
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
-        DownloadAsyncTask.delegate = this;
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloRestaurantes.json?alt=media&token=c16991cf-d2e4-4ccd-ad96-910bcc38176c"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloRestaurantes.json?alt=media&token=e32860d5-9a70-4ba1-ac37-e2874c4aed78"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -73,9 +76,8 @@ public class SectionsActivity extends AppCompatActivity implements DownloadAsync
 
         //downloadData();
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
-        DownloadAsyncTask.delegate = this;
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloServicios.json?alt=media&token=4378366d-1c30-4f78-8e11-c9ec2258a83a"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloServicios.json?alt=media&token=af2d6ab7-0466-49c7-befa-8c6068b213e0"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -88,17 +90,11 @@ public class SectionsActivity extends AppCompatActivity implements DownloadAsync
 
         //downloadData();
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
-        DownloadAsyncTask.delegate = this;
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloTurismo.json?alt=media&token=5254c0d0-eefb-429d-a280-9c7cb4e1b156"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloTurismo.json?alt=media&token=0588b7bb-efa4-485a-8347-3e6fe6703dd6"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onAmenitiesDownloaded(String amenitiesData) {
-        Log.d("DATOS", amenitiesData);
     }
 
 }

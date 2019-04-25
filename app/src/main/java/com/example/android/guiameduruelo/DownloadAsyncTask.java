@@ -14,6 +14,13 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 public class DownloadAsyncTask extends AsyncTask<URL, Void, String> {
+
+    public static DownloadAmenitiesInterface delegate;
+
+    public interface DownloadAmenitiesInterface{
+        void onAmenitiesDownloaded(String amenitiesData);
+    }
+
     @Override
     protected String doInBackground(URL... urls) {
         String amenitiesData = "";
@@ -30,7 +37,7 @@ public class DownloadAsyncTask extends AsyncTask<URL, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        Log.d("DATOS", s);
+        delegate.onAmenitiesDownloaded(s);
     }
 
     private String downloadData(URL url) throws IOException{

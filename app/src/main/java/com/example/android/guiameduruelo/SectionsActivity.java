@@ -44,8 +44,6 @@ public class SectionsActivity extends AppCompatActivity {
         i.setClass(this, CardList.class);
         startActivity(i);
 
-        //downloadData();
-
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
 
         try {
@@ -60,7 +58,6 @@ public class SectionsActivity extends AppCompatActivity {
         i.setClass(this, CardList.class);
         startActivity(i);
 
-        //downloadData();
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
         try {
             downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloRestaurantes.json?alt=media&token=e32860d5-9a70-4ba1-ac37-e2874c4aed78"));
@@ -74,7 +71,6 @@ public class SectionsActivity extends AppCompatActivity {
         i.setClass(this, CardList.class);
         startActivity(i);
 
-        //downloadData();
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
         try {
             downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloServicios.json?alt=media&token=af2d6ab7-0466-49c7-befa-8c6068b213e0"));
@@ -88,7 +84,6 @@ public class SectionsActivity extends AppCompatActivity {
         i.setClass(this, CardList.class);
         startActivity(i);
 
-        //downloadData();
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
         try {
             downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloTurismo.json?alt=media&token=0588b7bb-efa4-485a-8347-3e6fe6703dd6"));

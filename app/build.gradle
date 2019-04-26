@@ -11,9 +11,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            resValue 'string', "api_key", GuiameDuruelo_MapApiKey
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue 'string', "api_key", GuiameDuruelo_MapApiKey
         }
     }
 }
@@ -40,6 +44,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
     implementation 'com.google.firebase:firebase-core:16.0.8'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

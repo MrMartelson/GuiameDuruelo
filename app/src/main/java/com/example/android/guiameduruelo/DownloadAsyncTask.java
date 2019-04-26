@@ -56,12 +56,16 @@ public class DownloadAsyncTask extends AsyncTask<URL, Void, ArrayList<Amenities>
 
             for(int i = 0; i < amenitiesJsonArray.length(); i++){
                 JSONObject amenitiesJsonObject = amenitiesJsonArray.getJSONObject(i);
+                JSONObject latlngJsonObject = amenitiesJsonArray.getJSONObject(i);
                 String title = amenitiesJsonObject.getString("title");
                 String info = amenitiesJsonObject.getString("info");
 
+                String lat = latlngJsonObject.getString("lat");
+                String lng = latlngJsonObject.getString("lng");
+
                 placesList.add(new Amenities(title, info));
 
-                Log.d("DATOS", title + ": " + info);
+                Log.d("DATOS", title + ": " + info + "\n " + "latlong: " + lat + " " + lng);
             }
 
         } catch (JSONException e) {

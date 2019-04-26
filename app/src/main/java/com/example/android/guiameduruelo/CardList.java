@@ -32,26 +32,7 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
     }
 
     @Override
-    public void onAmenitiesDownloaded(String amenitiesData) {
-        ArrayList<Amenities> placesList = new ArrayList<>();
-
-        try {
-            JSONObject jsonObject = new JSONObject(amenitiesData);
-            JSONArray amenitiesJsonArray = jsonObject.getJSONArray("array");
-
-            for(int i = 0; i < amenitiesJsonArray.length(); i++){
-                JSONObject amenitiesJsonObject = amenitiesJsonArray.getJSONObject(i);
-                String title = amenitiesJsonObject.getString("title");
-                String info = amenitiesJsonObject.getString("info");
-
-                placesList.add(new Amenities(title, info));
-
-                Log.d("DATOS", title + ": " + info);
-                }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void onAmenitiesDownloaded(ArrayList<Amenities> placesList) {
         AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, placesList);
         listView.setAdapter(amenitiesAdapter);
     }

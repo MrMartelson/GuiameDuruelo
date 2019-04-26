@@ -5,6 +5,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,32 +16,58 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
-public class DownloadAsyncTask extends AsyncTask<URL, Void, String> {
+public class DownloadAsyncTask extends AsyncTask<URL, Void, ArrayList<Amenities>> {
 
     public static DownloadAmenitiesInterface delegate;
 
     public interface DownloadAmenitiesInterface{
-        void onAmenitiesDownloaded(String amenitiesData);
+        void onAmenitiesDownloaded(ArrayList<Amenities> placesList);
     }
 
     @Override
-    protected String doInBackground(URL... urls) {
-        String amenitiesData = "";
-
+    protected ArrayList<Amenities> doInBackground(URL... urls) {
+        String amenitiesData;
+        ArrayList<Amenities> placesList = null;
         try {
             amenitiesData = downloadData(urls[0]);
+            placesList = parseDataFromJson(amenitiesData);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return amenitiesData;
+        return placesList;
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(ArrayList<Amenities> placesList) {
+        super.onPostExecute(placesList);
 
-        delegate.onAmenitiesDownloaded(s);
+        delegate.onAmenitiesDownloaded(placesList);
+    }
+
+    private ArrayList<Amenities> parseDataFromJson(String amenitiesData){
+        ArrayList<Amenities> placesList = new ArrayList<>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(amenitiesData);
+            JSONArray amenitiesJsonArray = jsonObject.getJSONArray("array");
+
+            for(int i = 0; i < amenitiesJsonArray.length(); i++){
+                JSONObject amenitiesJsonObject = amenitiesJsonArray.getJSONObject(i);
+                String title = amenitiesJsonObject.getString("title");
+                String info = amenitiesJsonObject.getString("info");
+
+                placesList.add(new Amenities(title, info));
+
+                Log.d("DATOS", title + ": " + info);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return placesList;
     }
 
     private String downloadData(URL url) throws IOException{

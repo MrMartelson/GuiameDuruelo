@@ -24,7 +24,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -41,6 +44,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleApiClient googleApiClient;
     private Geofencing mGeofencing;
     private Location userLocation;
+    private ArrayList<Amenities> markersList;
+    Marker durueloMarker;
 
 
     @Override
@@ -78,6 +83,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+
+        Intent intent = getIntent();
+        markersList = intent.getParcelableExtra("markerLocations");
     }
 
     /**
@@ -95,12 +103,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng duruelo = new LatLng(DurueloLat, DurueloLong);
-        mMap.addMarker(new MarkerOptions().position(duruelo).title("Duruelo de la Sierra"));
+        durueloMarker = mMap.addMarker(new MarkerOptions().position(duruelo).title("Duruelo de la Sierra"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(duruelo));
         mMap.setMinZoomPreference(8.0f);
 
         //Set the map over Duruelo when is created
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
 
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -115,8 +124,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
-    public void actualizeMap(GoogleMap googleMap){
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,8 +145,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     protected void onStart() {
+
         googleApiClient.connect();
         super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        if(durueloMarker != null && markersList != null){
+        durueloMarker.remove();}
+        super.onResume();
+
+
+        if (markersList != null){
+            for (Amenities markers : markersList){
+                double latDouble = Double.valueOf(markers.getLat());
+                double lngDouble = Double.valueOf(markers.getLng());
+                mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(latDouble, lngDouble))
+                        .title(markers.getPlace()));
+            }}
     }
 
     @Override

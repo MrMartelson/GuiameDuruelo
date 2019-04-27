@@ -2,8 +2,6 @@ package com.example.android.guiameduruelo;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +19,7 @@ import java.util.ArrayList;
 public class DownloadAsyncTask extends AsyncTask<URL, Void, ArrayList<Amenities>> {
 
     public static DownloadAmenitiesInterface delegate;
+
 
     public interface DownloadAmenitiesInterface{
         void onAmenitiesDownloaded(ArrayList<Amenities> placesList);
@@ -63,9 +62,11 @@ public class DownloadAsyncTask extends AsyncTask<URL, Void, ArrayList<Amenities>
                 String lat = latlngJsonObject.getString("lat");
                 String lng = latlngJsonObject.getString("lng");
 
-                placesList.add(new Amenities(title, info));
+                placesList.add(new Amenities(title, info, lat, lng));
 
                 Log.d("DATOS", title + ": " + info + "\n " + "latlong: " + lat + " " + lng);
+
+
             }
 
         } catch (JSONException e) {

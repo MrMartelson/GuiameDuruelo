@@ -20,5 +20,10 @@
     <string name="fcm_message">¡Hora de comer!</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
+    <string name="acept">Aceptar</string>
+
+    <string name="permission_title">Acceder a la ubicación del teléfono</string>
+    <string name="permission_message">Debes aceptar este permiso para que la app te localice en el mapa</string>
+
 
 </resources>

@@ -8,20 +8,21 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/escudo_duruelo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/escudo_duruelo"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        tools:replace="android:appComponentFactory">
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString"
+        android:hardwareAccelerated="false"
+        >
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,25 +39,49 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SectionsActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+
         <activity android:name=".CardList"
             android:label="@string/app_name">
         </activity>
+
+        <receiver android:name=".GeofenceBroadcastReceiver"/>
+
+
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- [START fcm_disable_auto_init] -->
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+        <!-- [END fcm_disable_auto_init] -->
+
     </application>
 
 </manifest>

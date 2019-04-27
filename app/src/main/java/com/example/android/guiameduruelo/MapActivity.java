@@ -2,11 +2,17 @@ package com.example.android.guiameduruelo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,11 +20,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+    private static final String TAG = "MyFirebaseMsgService";
 
     private GoogleMap mMap;
     private double DurueloLat = 41.955181;
     private double DurueloLong = -2.931564;
+    private GoogleApiClient mClient;
+    private Geofencing mGeofencing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        mClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .addApi(Places.GEO_DATA_API)
+                .enableAutoManage(this, this)
+                .build();
+
+        mGeofencing = new Geofencing(this, mClient);
+        mGeofencing.registerGeofence();
     }
 
     /**
@@ -74,5 +96,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
     }
 }

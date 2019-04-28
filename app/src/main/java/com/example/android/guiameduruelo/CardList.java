@@ -3,10 +3,12 @@ package com.example.android.guiameduruelo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.support.v7.widget.Toolbar;
 
@@ -37,16 +39,30 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
 
         DownloadAsyncTask.delegate = this;
 
+        if(savedInstanceState != null){
+            markers = savedInstanceState.getParcelableArrayList("key");
+            AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, markers);
+            listView.setAdapter(amenitiesAdapter);
+        }
+
     }
 
     @Override
     public void onAmenitiesDownloaded(ArrayList<Amenities> placesList) {
 
-            AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, placesList);
+        markers = placesList;
+
+            AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, markers);
             listView.setAdapter(amenitiesAdapter);
 
-            markers = placesList;
 
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("key", markers);
+        super.onSaveInstanceState(outState);
     }
 
     public void addMarkersToMap(View view) {

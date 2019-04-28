@@ -62,8 +62,7 @@ public class Geofencing implements ResultCallback {
     geofence = new Geofence.Builder()
             .setRequestId("Duruelo de la Sierra")
             .setCircularRegion(41.955181, -2.931564, GEOFENCE_RADIUS)
-            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER |
-                    Geofence.GEOFENCE_TRANSITION_EXIT)
+            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
             .build();
     }
 

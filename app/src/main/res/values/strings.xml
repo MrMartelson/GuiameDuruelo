@@ -25,5 +25,7 @@
     <string name="permission_title">Acceder a la ubicación del teléfono</string>
     <string name="permission_message">Debes aceptar este permiso para que la app te localice en el mapa</string>
 
+    <string name="geofence_entry_msg">¡Bienvenido a Duruelo de la Sierra!¡Disfruta de tu estancia!</string>
+
 
 </resources>

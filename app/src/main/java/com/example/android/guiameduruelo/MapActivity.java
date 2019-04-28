@@ -1,14 +1,21 @@
 package com.example.android.guiameduruelo;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -110,6 +117,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //Set the map over Duruelo when is created
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
+
+        mGeofencing = new Geofencing(this, mClient);
+        mGeofencing.registerGeofence();
 
 
         if (getIntent() != null) {
@@ -234,4 +244,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+    public static Intent makeNotificationIntent(Context context, String msg) {
+        Intent intent = new Intent( context, MapActivity.class );
+        intent.putExtra(String.valueOf(R.string.geofence_entry_msg), msg );
+        return intent;
+    }
+
 }

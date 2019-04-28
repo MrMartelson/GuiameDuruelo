@@ -15,6 +15,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
 
+import static com.google.android.gms.location.GeofencingRequest.INITIAL_TRIGGER_DWELL;
+
 
 public class Geofencing implements ResultCallback {
 
@@ -65,9 +67,11 @@ public class Geofencing implements ResultCallback {
             .build();
     }
 
-    private GeofencingRequest getGeofencingRequest(){
+
+
+    public GeofencingRequest getGeofencingRequest(){
         GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
-        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_DWELL);
+        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER | INITIAL_TRIGGER_DWELL);
         builder.addGeofence(geofence);
         return builder.build();
     }

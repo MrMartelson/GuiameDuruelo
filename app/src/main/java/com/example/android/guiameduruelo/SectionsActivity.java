@@ -29,8 +29,6 @@ public class SectionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sections);
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override

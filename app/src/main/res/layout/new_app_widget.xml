@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_layout_color"
+    >
+
+    <TextView
+        android:id="@+id/appwidget_text"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_low"
+        android:contentDescription="@string/appwidget_title"
+        android:text="@string/appwidget_title"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:padding="@dimen/margin_low"
+        android:text="@string/appwidget_description"
+        android:contentDescription="@string/appwidget_description"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/widget_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:padding="@dimen/margin_low"
+        android:text="@string/appwidget_texto"
+        android:contentDescription="@string/appwidget_texto"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -34,7 +35,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static final String TAG = "MyFirebaseMsgService";
+    private static final String TAG = "MAP_ACTIVITY";
 
     private static final int ACCESS_FINE_LOCATION_PERMISSION_REQUEST_CODE = 0;
     private GoogleMap mMap;
@@ -46,6 +47,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Location userLocation;
     private ArrayList<Amenities> markersList;
     Marker durueloMarker;
+    Marker amMarker;
 
 
     @Override
@@ -84,8 +86,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .addApi(LocationServices.API)
                 .build();
 
-        Intent intent = getIntent();
-        markersList = intent.getParcelableExtra("markerLocations");
     }
 
     /**
@@ -112,15 +112,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(DurueloLat, DurueloLong), 15.5f));
 
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                mMap.setMyLocationEnabled(true);
-            } else {
-                final String[] permisions = new String[]{ACCESS_FINE_LOCATION};
-                requestPermissions(permisions, ACCESS_FINE_LOCATION_PERMISSION_REQUEST_CODE);
+        if (getIntent() != null) {
+            markersList = getIntent().getParcelableArrayListExtra("key");
+            if (markersList != null) {
+
+                if (durueloMarker != null) {
+                    durueloMarker.remove();
+                }
+
+                for (Amenities markers : markersList) {
+                    double latDouble = Double.valueOf(markers.getLat());
+                    double lngDouble = Double.valueOf(markers.getLng());
+                    String title = markers.getPlace();
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latDouble, lngDouble))
+                            .title(title));
+                }
             }
-        }else {
-            mMap.setMyLocationEnabled(true);
+
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mMap.setMyLocationEnabled(true);
+                } else {
+                    final String[] permisions = new String[]{ACCESS_FINE_LOCATION};
+                    requestPermissions(permisions, ACCESS_FINE_LOCATION_PERMISSION_REQUEST_CODE);
+                }
+            } else {
+                mMap.setMyLocationEnabled(true);
+            }
         }
     }
 
@@ -152,25 +172,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     protected void onResume() {
-        if(durueloMarker != null && markersList != null){
-        durueloMarker.remove();}
+
         super.onResume();
-
-
-        if (markersList != null){
-            for (Amenities markers : markersList){
-                double latDouble = Double.valueOf(markers.getLat());
-                double lngDouble = Double.valueOf(markers.getLng());
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(latDouble, lngDouble))
-                        .title(markers.getPlace()));
-            }}
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop(){
         googleApiClient.disconnect();
         super.onStop();
+    }
+
+    private void upgradeMap(){
+
     }
 
     @Override

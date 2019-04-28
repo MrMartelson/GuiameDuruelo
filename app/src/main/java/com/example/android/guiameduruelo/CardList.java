@@ -23,6 +23,8 @@ import java.util.List;
 public class CardList extends AppCompatActivity implements DownloadAsyncTask.DownloadAmenitiesInterface {
     ListView listView;
     ArrayList<Amenities> markers;
+    private static final String TAG = "CARDLIST";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_card);
@@ -39,19 +41,18 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
 
     @Override
     public void onAmenitiesDownloaded(ArrayList<Amenities> placesList) {
-        AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, placesList);
-        listView.setAdapter(amenitiesAdapter);
 
-       markers = new ArrayList<>();
-       markers.addAll(placesList);
+            AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, placesList);
+            listView.setAdapter(amenitiesAdapter);
+
+            markers = placesList;
 
     }
 
     public void addMarkersToMap(View view) {
 
-
-        Intent intent = new Intent();
-        intent.putExtra("markerLocations", markers );
-        startActivity(new Intent(getApplicationContext(), MapActivity.class));
+        Intent intent = new Intent(CardList.this, MapActivity.class);
+        intent.putParcelableArrayListExtra("key", markers);
+        startActivity(intent);
     }
 }

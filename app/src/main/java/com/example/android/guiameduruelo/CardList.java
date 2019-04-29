@@ -1,26 +1,14 @@
 package com.example.android.guiameduruelo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.support.v7.widget.Toolbar;
 
-
-import com.google.android.gms.maps.model.Marker;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CardList extends AppCompatActivity implements DownloadAsyncTask.DownloadAmenitiesInterface {
     ListView listView;
@@ -66,9 +54,9 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
     }
 
     public void addMarkersToMap(View view) {
-
         Intent intent = new Intent(CardList.this, MapActivity.class);
         intent.putParcelableArrayListExtra("key", markers);
         startActivity(intent);
     }
+
 }

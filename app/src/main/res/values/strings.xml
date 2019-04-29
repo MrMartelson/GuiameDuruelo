@@ -15,6 +15,7 @@
     <string name="bt_widget">Mostrar en el widget</string>
 
     <string name="list">Lista</string>
+    <string name="empty_string">Empty View</string>
 
     <string name="download_error">Error en la descarga de datos</string>
     <string name="fcm_message">¡Hora de comer!</string>
@@ -32,5 +33,12 @@
     <string name="appwidget_texto"> ¡Haz click!</string>
     <string name="add_widget">Add widget</string>
 
+    <string name="bar">BARES CERCANOS</string>
+    <string name="huerta">La Huerta</string>
+    <string name="huerta_address">Calle Nueva, 15</string>
+    <string name="narcis">Bar Narcis</string>
+    <string name="narcis_address">Calle Buena Vista, 9</string>
+    <string name="mingo">Bar Mingo</string>
+    <string name="mingo_address">Plaza la Carta Puebla, 2</string>
 
 </resources>

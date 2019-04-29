@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_layout_color"
+    android:id="@+id/widget_layout"
+    >
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="@dimen/margin_low"
+       android:textStyle="bold"
+       android:textSize="@dimen/text_card"
+       android:text="@string/bar"
+       android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_low">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_low"
+            android:textSize="@dimen/fab_margin"
+            android:text="@string/huerta" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_low"
+            android:textSize="@dimen/text_title"
+            android:text="@string/huerta_address"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_low">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_low"
+            android:textSize="@dimen/fab_margin"
+            android:text="@string/narcis"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_low"
+            android:textSize="@dimen/text_title"
+            android:text="@string/narcis_address"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_low">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_low"
+            android:textSize="@dimen/fab_margin"
+            android:text="@string/mingo"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_low"
+            android:textSize="@dimen/text_title"
+            android:text="@string/mingo_address"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/appwidget_description"
+        android:textSize="@dimen/fab_margin"
+        android:textStyle="bold"/>
+
+
+
+</LinearLayout>

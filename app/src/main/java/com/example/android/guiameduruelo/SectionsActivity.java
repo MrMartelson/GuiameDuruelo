@@ -45,7 +45,7 @@ public class SectionsActivity extends AppCompatActivity {
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
 
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloHoteles.json?alt=media&token=c7ae73b4-4b1c-41d0-9ab1-e17d217066ef"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloHoteles.json?alt=media&token=37413321-cd23-4693-b9f3-002989330a1a"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class SectionsActivity extends AppCompatActivity {
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloRestaurantes.json?alt=media&token=e32860d5-9a70-4ba1-ac37-e2874c4aed78"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloRestaurantes.json?alt=media&token=864cb3d8-fd1b-4050-96db-d46e4c9cb170"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class SectionsActivity extends AppCompatActivity {
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloServicios.json?alt=media&token=af2d6ab7-0466-49c7-befa-8c6068b213e0"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloServicios.json?alt=media&token=5877a046-4e16-4f22-a155-d8514dc59ede"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class SectionsActivity extends AppCompatActivity {
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
         try {
-            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloTurismo.json?alt=media&token=0588b7bb-efa4-485a-8347-3e6fe6703dd6"));
+            downloadAsyncTask.execute(new URL("https://firebasestorage.googleapis.com/v0/b/zeta-feat-236616.appspot.com/o/GuiaDurueloTurismo.json?alt=media&token=8a29f264-5b35-4985-9e09-a5a743f63ee4"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

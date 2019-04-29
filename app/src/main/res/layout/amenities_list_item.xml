@@ -8,6 +8,12 @@
     android:background="@drawable/rounded_layout"
     >
 
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:contentDescription="@string/image_desc" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,8 +25,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/margin_low"
             android:textStyle="bold"
-            android:textSize="@dimen/text_title"
-            />
+            android:textSize="@dimen/text_title" />
 
         <TextView
             android:id="@+id/tv_info"

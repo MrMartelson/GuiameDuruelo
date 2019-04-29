@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,8 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
     private ArrayList<Amenities> amenitiesList;
     private Context context;
     private int layoutId;
+    public String urlImage;
+
 
     public AmenitiesAdapter(Context context, int resource, List<Amenities> amenities) {
         super(context, resource, amenities);
@@ -25,6 +30,7 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
         this.context = context;
         this.layoutId = resource;
         amenitiesList = new ArrayList<>(amenities);
+
     }
 
     @NonNull
@@ -41,6 +47,7 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
             holder = new ViewHolder();
             holder.placeTextView = convertView.findViewById(R.id.tv_title);
             holder.infoTextView = convertView.findViewById(R.id.tv_info);
+            holder.imageView = convertView.findViewById(R.id.image_view);
 
             convertView.setTag(holder);
         } else{
@@ -52,11 +59,15 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
         holder.placeTextView.setText(amenities.getPlace());
         holder.infoTextView.setText(amenities.getInfo());
 
+        urlImage = amenities.image;
+        Picasso.get().load(urlImage).into(holder.imageView);
+
         return convertView;
     }
 
     private class ViewHolder{
         public TextView placeTextView;
         public TextView infoTextView;
+        public ImageView imageView;
     }
 }

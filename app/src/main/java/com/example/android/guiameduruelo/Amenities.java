@@ -17,12 +17,14 @@ public class Amenities implements Parcelable {
     public String info;
     public String lat;
     public String lng;
+    public String image;
 
-    public Amenities(String place, String info, String latitude, String longitude){
+    public Amenities(String place, String info, String latitude, String longitude, String image){
         this.place = place;
         this.info = info;
         this.lat = latitude;
         this.lng = longitude;
+        this.image = image;
     }
 
 
@@ -56,6 +58,8 @@ public class Amenities implements Parcelable {
     public String getLat() { return lat; }
 
     public String getLng() { return lng; }
+
+    public String getImage() { return image; }
 
     @Override
     public int describeContents() {

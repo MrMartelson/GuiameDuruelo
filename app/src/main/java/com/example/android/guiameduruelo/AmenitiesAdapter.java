@@ -7,9 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.android.guiameduruelo.database.AmenitiesEntry;
+import com.example.android.guiameduruelo.database.AppDatabase;
+import com.example.android.guiameduruelo.database.DatabaseExecutor;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,6 +27,7 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
     private Context context;
     private int layoutId;
     public String urlImage;
+    private AppDatabase mDb;
 
 
     public AmenitiesAdapter(Context context, int resource, List<Amenities> amenities) {
@@ -48,19 +54,43 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
             holder.placeTextView = convertView.findViewById(R.id.tv_title);
             holder.infoTextView = convertView.findViewById(R.id.tv_info);
             holder.imageView = convertView.findViewById(R.id.image_view);
+            holder.radioButton = convertView.findViewById(R.id.radio_button);
 
             convertView.setTag(holder);
         } else{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Amenities amenities = amenitiesList.get(position);
+        final Amenities amenities = amenitiesList.get(position);
 
         holder.placeTextView.setText(amenities.getPlace());
         holder.infoTextView.setText(amenities.getInfo());
 
         urlImage = amenities.image;
         Picasso.get().load(urlImage).into(holder.imageView);
+
+        mDb = AppDatabase.getInstance(context.getApplicationContext());
+
+        holder.radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String place = amenities.getPlace();
+                String info = amenities.getInfo();
+                String lat = amenities.getLat();
+                String lng = amenities.getLng();
+                String image = amenities.getImage();
+
+                if(isChecked){
+                    final AmenitiesEntry amenitiesEntry = new AmenitiesEntry(place, info, lat, lng, image);
+                    DatabaseExecutor.getInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDb.amenitiesDao().addAmenities(amenitiesEntry);
+                        }
+                    });
+                }
+            }
+        });
 
         return convertView;
     }
@@ -69,5 +99,6 @@ public class AmenitiesAdapter extends ArrayAdapter<Amenities> {
         public TextView placeTextView;
         public TextView infoTextView;
         public ImageView imageView;
+        public RadioButton radioButton;
     }
 }

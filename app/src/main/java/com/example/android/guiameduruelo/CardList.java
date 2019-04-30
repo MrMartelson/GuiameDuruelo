@@ -5,15 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ListView;
 
+
+import com.example.android.guiameduruelo.database.AppDatabase;
 
 import java.util.ArrayList;
 
 public class CardList extends AppCompatActivity implements DownloadAsyncTask.DownloadAmenitiesInterface {
     ListView listView;
     ArrayList<Amenities> markers;
+    ArrayList<Amenities> favorited;
     private static final String TAG = "CARDLIST";
+    private AppDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +33,16 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
         DownloadAsyncTask.delegate = this;
 
         if(savedInstanceState != null){
+            Intent i = getIntent();
+            if(i.getBooleanExtra("favorited", true)) {
+                mDb = AppDatabase.getInstance(getApplicationContext());
+                AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.favorited_list_item, favorited);
+                listView.setAdapter(amenitiesAdapter);
+            } else{
             markers = savedInstanceState.getParcelableArrayList("key");
             AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, markers);
             listView.setAdapter(amenitiesAdapter);
+            }
         }
 
     }
@@ -42,8 +54,6 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
 
             AmenitiesAdapter amenitiesAdapter = new AmenitiesAdapter(this, R.layout.amenities_list_item, markers);
             listView.setAdapter(amenitiesAdapter);
-
-
 
     }
 

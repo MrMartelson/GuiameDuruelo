@@ -40,5 +40,6 @@
     <string name="narcis_address">Calle Buena Vista, 9</string>
     <string name="mingo">Bar Mingo</string>
     <string name="mingo_address">Plaza la Carta Puebla, 2</string>
+    <string name="favorited">Favoritos</string>
 
 </resources>

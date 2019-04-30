@@ -90,4 +90,11 @@ public class SectionsActivity extends AppCompatActivity {
         }
     }
 
+    public void seeFavoritesInfo(View v){
+        Intent i = new Intent();
+        i.setClass(this, FavoritedList.class);
+        i.putExtra("favorito", true);
+        startActivity(i);
+    }
+
 }

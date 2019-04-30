@@ -12,8 +12,6 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceBuffer;
 
 import static com.google.android.gms.location.GeofencingRequest.INITIAL_TRIGGER_DWELL;
 

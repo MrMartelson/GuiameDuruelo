@@ -63,11 +63,11 @@
 
         </activity>
         <activity
-            android:name=".CardList"
+            android:name=".CardListActivity"
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name=".FavoritedList"
+            android:name=".FavoritedListActivity"
             android:label="@string/app_name"/>
         <receiver android:name=".GeofenceBroadcastReceiver" />
 

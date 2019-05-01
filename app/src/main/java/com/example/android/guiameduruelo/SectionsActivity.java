@@ -4,22 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.Charset;
 
 public class SectionsActivity extends AppCompatActivity {
 
@@ -39,7 +27,7 @@ public class SectionsActivity extends AppCompatActivity {
 
     public void seeHotelsInfo(View v){
         Intent i = new Intent();
-        i.setClass(this, CardList.class);
+        i.setClass(this, CardListActivity.class);
         startActivity(i);
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
@@ -53,7 +41,7 @@ public class SectionsActivity extends AppCompatActivity {
 
     public void seeRestaurantsInfo(View v){
         Intent i = new Intent();
-        i.setClass(this, CardList.class);
+        i.setClass(this, CardListActivity.class);
         startActivity(i);
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
@@ -66,7 +54,7 @@ public class SectionsActivity extends AppCompatActivity {
 
     public void seeServicesInfo(View v){
         Intent i = new Intent();
-        i.setClass(this, CardList.class);
+        i.setClass(this, CardListActivity.class);
         startActivity(i);
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
@@ -79,7 +67,7 @@ public class SectionsActivity extends AppCompatActivity {
 
     public void seeTurismInfo(View v){
         Intent i = new Intent();
-        i.setClass(this, CardList.class);
+        i.setClass(this, CardListActivity.class);
         startActivity(i);
 
         DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask();
@@ -92,7 +80,7 @@ public class SectionsActivity extends AppCompatActivity {
 
     public void seeFavoritesInfo(View v){
         Intent i = new Intent();
-        i.setClass(this, FavoritedList.class);
+        i.setClass(this, FavoritedListActivity.class);
         i.putExtra("favorito", true);
         startActivity(i);
     }

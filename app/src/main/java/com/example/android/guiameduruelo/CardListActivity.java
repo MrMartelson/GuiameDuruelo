@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ListView;
 
 
@@ -13,7 +12,7 @@ import com.example.android.guiameduruelo.database.AppDatabase;
 
 import java.util.ArrayList;
 
-public class CardList extends AppCompatActivity implements DownloadAsyncTask.DownloadAmenitiesInterface {
+public class CardListActivity extends AppCompatActivity implements DownloadAsyncTask.DownloadAmenitiesInterface {
     ListView listView;
     ArrayList<Amenities> markers;
     ArrayList<Amenities> favorited;
@@ -64,7 +63,7 @@ public class CardList extends AppCompatActivity implements DownloadAsyncTask.Dow
     }
 
     public void addMarkersToMap(View view) {
-        Intent intent = new Intent(CardList.this, MapActivity.class);
+        Intent intent = new Intent(CardListActivity.this, MapActivity.class);
         intent.putParcelableArrayListExtra("key", markers);
         startActivity(intent);
     }

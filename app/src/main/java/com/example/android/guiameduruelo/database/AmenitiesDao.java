@@ -16,7 +16,7 @@ import java.util.List;
 public interface AmenitiesDao {
 
     @Query("SELECT * FROM amenitiesTable ORDER BY id")
-    List<AmenitiesEntry> loadAllAmenities();
+    LiveData<List<AmenitiesEntry>> loadAllAmenities();
 
     @Insert
     void addAmenities(AmenitiesEntry amenities);
